@@ -7,6 +7,10 @@
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
+  <div class="form-group">
+    <%= f.label :tag,'Category' %>
+    <%= f.text_field :tag, class: 'form-control book_tag' %>
+  </div>
   <% if book.id === nil %>
     <div class="form-group" id="star">
       <%= f.label :evaluation,'Rate' %>
@@ -17,13 +21,14 @@
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
       scoreName: 'book[evaluation]',
-      half: false,
+      half: true,
     });
     </script>
-    <% else %>
-      <%= render 'evaluation', book: book %>
-    <% end %>
+  <% else %>
+    <%= render 'evaluation', book: book %>
+  <% end %>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
